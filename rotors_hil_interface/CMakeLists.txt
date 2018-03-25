@@ -27,7 +27,12 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
 )
 
-find_package(Eigen REQUIRED)
+
+# find_package(Eigen REQUIRED)
+
+# https://stackoverflow.com/questions/5922016/cmake-cant-find-eigen3
+find_package( PkgConfig )
+pkg_check_modules( EIGEN3 REQUIRED eigen3 )
 
 catkin_package(
   INCLUDE_DIRS include
@@ -39,7 +44,8 @@ catkin_package(
 include_directories(
   include
   ${catkin_INCLUDE_DIRS}
-  ${Eigen_INCLUDE_DIRS}
+#  ${Eigen_INCLUDE_DIRS}
+  ${EIGEN3_INCLUDE_DIRS}
   ${mavros_msgs_INCLUDE_DIRS}
 )
 
